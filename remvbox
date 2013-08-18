@@ -9,12 +9,13 @@
 #
 #
 
-# Check if the share folder is already mounted
+# Check to see if the share folder is already mounted...
 if [[ $EUID -ne 0 ]] ; then
 	SharesDIR=$(mount -l -t vboxsf | grep -m1 $(id -u `whoami`) | cut -d ' ' -f3)
 else
 	SharesDIR=$(mount -l -t vboxsf | cut -d ' ' -f3 | head -1)
 fi
+# ...and if so open that folder and exit.
 [[ -d $SharesDIR ]] && { xdg-open $SharesDIR; exit 0; }
 
 # Choose which one of the VBox shares to remount
