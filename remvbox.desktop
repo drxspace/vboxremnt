@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=VBox Shares Remounter
+Name[el]=Επανασύνδεση κοινόχρηστου VBox φακέλλου
+Comment=Remounts a VBox share for use by the current user
+Comment[el]=Επανασύνδεση ενός κοινόχρηστου φακέλλου του VBox για χρήση από τον τρέχον χρήστη.
+GenericName=VBox shares Remounter
+Exec=/usr/local/bin/remvbox
+Terminal=false
+Type=Application
+Categories=GTK;Utility;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/remvbox.png
+StartupNotify=true
