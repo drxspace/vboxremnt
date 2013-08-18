@@ -7,9 +7,9 @@
 #                                    /_/           drxspace@gmail.com
 #
 
-VirtualBox's shares remounter script for use by a simple user account
+VBox shares remounter
 
-VirtualBox's shares remounter is a bash script that tries to mount possible shared folders
+VirtualBox's shares remounter is a bash script that tries to mount a VBox shared folder
 for use by a simple (not root the default) user account
 
 Necessary dependencies:
