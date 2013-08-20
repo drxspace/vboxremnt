@@ -10,15 +10,19 @@
 #
 
 if [ $EUID -ne 0 ] ; then
-	notify-send "This script needs to be run as root." -i face-angry
+	notify-send "RemVBox Installer" "This script needs root privilages to run.\nTry to run sudo "$0"" -i face-sad
 	exit 1
 fi
+
+test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 
 cd "$(dirname "$0")"
 { cp remvbox /usr/local/bin/ && \
   cp remvbox.png /usr/share/icons/hicolor/48x48/apps/ && \
-  cp remvbox.desktop /usr/share/applications && \
-  cp remvbox.desktop ~/Desktop; } || exit 2
+  desktop-file-install remvbox.desktop && \
+  desktop-file-install --dir="${XDG_DESKTOP_DIR:-$HOME/Desktop}" remvbox.desktop ; } || \
+  { notify-send "RemVBox Installer" "Installation's failed..." -i face-worried ;
+    exit 2 ; }
 
-notify-send "Installer" "Installation's done Okay!" -i face-wink
+notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
 exit 0

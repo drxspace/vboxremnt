@@ -5,6 +5,7 @@ Name[el]=Επανασύνδεση κοινόχρηστου φακέλλου VBox
 Comment=Remounts a VBox shared folder for use by the current user
 Comment[el]=Επανασύνδεση ενός κοινόχρηστου φακέλλου του VBox για χρήση από τον τρέχον χρήστη
 GenericName=VBox shares Remounter
+GenericName[el]=Επανασύνδεση κοινόχρηστου φακέλλου VBox
 Exec=/usr/local/bin/remvbox
 Terminal=false
 Type=Application
