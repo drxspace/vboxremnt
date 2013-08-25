@@ -10,10 +10,10 @@
 #
 
 if [[ $EUID -ne 0 ]]; then
-	if [[ -t 1 ]]; then
+	if [ -t 0 ]; then
 		sudo "$0"
 	else
-		gksu --sudo-mode --preserve-env "$0"
+		gksudo --sudo-mode --preserve-env "$0"
 	fi
 	exit $?
 fi
