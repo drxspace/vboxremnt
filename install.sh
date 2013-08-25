@@ -9,11 +9,12 @@
 #
 #
 
-if [ $EUID -ne 0 ] ; then
-	if [ -t 1 ]; then
+if [[ $EUID -ne 0 ]]; then
+	if [[ -t 1 ]]; then
 		sudo "$0"
 	else
-		notify-send "RemVBox Installer" "This script needs root privilages to run.\nTry to run sudo "$0"" -i face-sad
+		gksu --sudo-mode --preserve-env "$0"
+#		notify-send "RemVBox Installer" "This script needs root privilages to run.\nTry to run sudo "$0"" -i face-sad
 	fi
 	exit 1
 fi
@@ -21,8 +22,8 @@ fi
 test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 
 cd "$(dirname "$0")"
-{ cp remvbox /usr/local/bin/ && \
-  cp remvbox.png /usr/share/icons/hicolor/48x48/apps/ && \
+{ cp -v remvbox /usr/local/bin/ && \
+  cp -v remvbox.png /usr/share/icons/hicolor/48x48/apps/ && \
   desktop-file-install remvbox.desktop && \
   desktop-file-install --dir="${XDG_DESKTOP_DIR:-$HOME/Desktop}" remvbox.desktop ; } || \
   { notify-send "RemVBox Installer" "Installation's failed..." -i face-worried ;
