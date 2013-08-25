@@ -10,7 +10,11 @@
 #
 
 if [ $EUID -ne 0 ] ; then
-	notify-send "RemVBox Installer" "This script needs root privilages to run.\nTry to run sudo "$0"" -i face-sad
+	if [ -t 1 ]; then
+		sudo "$0"
+	else
+		notify-send "RemVBox Installer" "This script needs root privilages to run.\nTry to run sudo "$0"" -i face-sad
+	fi
 	exit 1
 fi
 
