@@ -14,9 +14,8 @@ if [[ $EUID -ne 0 ]]; then
 		sudo "$0"
 	else
 		gksu --sudo-mode --preserve-env "$0"
-#		notify-send "RemVBox Installer" "This script needs root privilages to run.\nTry to run sudo "$0"" -i face-sad
 	fi
-	exit 1
+	exit $?
 fi
 
 test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
@@ -26,8 +25,6 @@ cd "$(dirname "$0")"
   cp -v remvbox.png /usr/share/icons/hicolor/48x48/apps/ && \
   desktop-file-install remvbox.desktop && \
   desktop-file-install --dir="${XDG_DESKTOP_DIR:-$HOME/Desktop}" remvbox.desktop ; } || \
-  { notify-send "RemVBox Installer" "Installation's failed..." -i face-worried ;
-    exit 2 ; }
+{ notify-send "RemVBox Installer" "Installation's failed..." -i face-worried ; exit 2 ; }
 
 notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
-exit 0
