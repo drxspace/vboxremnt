@@ -9,22 +9,25 @@
 #
 #
 
+cd "$(dirname "$0")"
+[[ $EUID -ne 0 ]] && \
+{ cp -v remvbox.desktop "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ; \
+  chmod +x "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ; }
+
 if [[ $EUID -ne 0 ]]; then
 	if [ -t 0 ]; then
-		sudo "$0"
+		sudo -E "$0"
 	else
-		gksudo --sudo-mode --preserve-env "$0"
+		gksudo --preserve-env --sudo-mode "$0"
 	fi
 	exit $?
 fi
 
 test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 
-cd "$(dirname "$0")"
 { cp -v remvbox /usr/local/bin/ && \
   cp -v remvbox.png /usr/share/icons/hicolor/48x48/apps/ && \
-  desktop-file-install remvbox.desktop && \
-  desktop-file-install --dir="${XDG_DESKTOP_DIR:-$HOME/Desktop}" remvbox.desktop ; } || \
+  desktop-file-install remvbox.desktop ; } || \
 { notify-send "RemVBox Installer" "Installation's failed..." -i face-worried ; exit 2 ; }
 
 notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
