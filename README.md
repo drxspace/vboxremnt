@@ -11,13 +11,9 @@
 
 # VBox shares remounter
 
-VirtualBox's shares remounter is a bash script that tries to mount a VBox shared folder<br />
-for use by a simple (not root the default) user account<br />
+VirtualBox's shares remounter is a bash script that tries to mount a VBox shared folder for use by a simple (not root the default) user account<br />
 <br />
 ### Necessary dependencies:
-Perhaps you'll need to install zenity with this command:<br />
-<code>sudo apt-get install -y zenity</code><br />
-gksu is not recommended any more and it may be removed entirely from future issues of Ubuntu. Nevertheless it can be installed with:<br />
-<code>sudo apt-get install -y gksu</code><br />
-If you decided to install gksu and you're using the 64-bit version you'll need to run:<br />
-<code>gksu-properties</code> once to set the authentication to sudo.<br />
+Perhaps you'll need to install zenity with this command: <code>sudo apt-get install -y zenity</code><br />
+<code>gksu</code> is not recommended any more and it may be removed entirely from future issues of Ubuntu. Nevertheless it can be installed with: <code>sudo apt-get install -y gksu</code><br />
+If you decided to install gksu and you're using the <strong>64-bit</strong> version you'll need to run: <code>gksu-properties</code> once to set the authentication to sudo.<br />
