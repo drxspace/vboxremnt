@@ -10,7 +10,7 @@
 #
 
 cd "$(dirname "$0")"
-[[ $EUID -ne 0 ]] && \
+[[ ! -f "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ]] && \
 { cp -v remvbox.desktop "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ; \
   chmod +x "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ; }
 
