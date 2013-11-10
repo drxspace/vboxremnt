@@ -12,9 +12,10 @@
 cd "$(dirname "$0")"
 
 [[ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]] && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
-[[ ! -f "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ]] && \
-{ cp -v remvbox.desktop "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ; \
-  chmod +x "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ; }
+[[ ! -f "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ]] && {
+  cp -v remvbox.desktop "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop;
+  chmod +x "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop;
+}
 
 if [[ $EUID -ne 0 ]]; then
 	if [ -t 0 ]; then
@@ -25,9 +26,9 @@ if [[ $EUID -ne 0 ]]; then
 	exit $?
 fi
 
-{ cp -v remvbox /usr/local/bin/ && \
-  cp -v remvbox.png /usr/share/icons/hicolor/48x48/apps/ && \
-  desktop-file-install remvbox.desktop ; } || \
-{ notify-send "RemVBox Installer" "Installation's failed..." -i face-worried ; exit 1 ; }
+{ cp -v remvbox /usr/local/bin/ &&
+  cp -v remvbox.png /usr/share/icons/hicolor/48x48/apps/ &&
+  desktop-file-install remvbox.desktop; } ||
+{ notify-send "RemVBox Installer" "Installation's failed..." -i face-worried; exit 1; }
 
 notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
