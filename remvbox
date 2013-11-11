@@ -34,7 +34,7 @@ fi
 # Choose a folder to mount the VBox shared folder
 SharesDIR=$(zenity --file-selection --directory --title="Select a folder to mount the VBox shared folder")
 [[ -z $SharesDIR ]] && { notify-send "Remount" "Ok! Bye." -i face-smile; exit 2; }
-SharesDIR=""$SharesDIR"/"$AShare""
+SharesDIR="$SharesDIR"/"$AShare"
 mkdir -p "$SharesDIR"
 
 # Check to see if script was invoked from terminal or not

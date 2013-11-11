@@ -13,8 +13,8 @@ cd "$(dirname "$0")"
 
 [[ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]] && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 [[ ! -f "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop ]] && {
-  cp -v remvbox.desktop "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop;
-  chmod +x "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop;
+  cp -v remvbox.desktop "${XDG_DESKTOP_DIR:-$HOME/Desktop}"
+  chmod +x "${XDG_DESKTOP_DIR:-$HOME/Desktop}"/remvbox.desktop
 }
 
 if [[ $EUID -ne 0 ]]; then
