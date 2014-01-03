@@ -8,6 +8,7 @@
 #                                    /_/           drxspace@gmail.com
 #
 #
+set -e
 
 cd "$(dirname "$0")"
 
@@ -28,7 +29,6 @@ fi
 
 {
 	cp -v remvbox /usr/local/bin/
-	[[ -f rm /usr/share/applications/remvbox.desktop ]] && rm /usr/share/applications/remvbox.desktop
 	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/
 	chown -R root:root /usr/share/icons/hicolor/
 	desktop-file-install remvbox.desktop
@@ -39,4 +39,4 @@ fi
 
 notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
 #exit 0
-# I don't need this (see line 26)
+# I don't need the above (see line 27)

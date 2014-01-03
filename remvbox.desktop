@@ -10,5 +10,5 @@ Exec=/usr/local/bin/remvbox
 Terminal=false
 Type=Application
 Categories=GTK;Utility;System;
-Icon=remvbox.png
+Icon=remvbox
 StartupNotify=true
