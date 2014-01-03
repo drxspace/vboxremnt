@@ -26,10 +26,16 @@ if [[ $EUID -ne 0 ]]; then
 	exit $?
 fi
 
-{ cp -v remvbox /usr/local/bin/ &&
-  tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/ &&
-  chown -R root:root /usr/share/icons/hicolor/ &&
-  desktop-file-install remvbox.desktop; } ||
-{ notify-send "RemVBox Installer" "Installation's failed..." -i face-worried; exit 1; }
+{
+	cp -v remvbox /usr/local/bin/
+	[[ -f rm /usr/share/applications/remvbox.desktop ]] && rm /usr/share/applications/remvbox.desktop
+	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/
+	chown -R root:root /usr/share/icons/hicolor/
+	desktop-file-install remvbox.desktop
+} || {
+	notify-send "RemVBox Installer" "Installation's failed..." -i face-worried
+	exit 1
+}
 
 notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
+#exit 0
