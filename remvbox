@@ -29,11 +29,11 @@ if [[ ! -z ${SharesList[*]} ]]; then
 else
 	AShare=$(zenity --entry --text="I couldn't find any mounted VBox shared folder.\nIf you'd like you can type a VBox shared folder's name here:" --entry-text="vbshares")
 fi
-[[ -z $AShare ]] && { notify-send "Remount" "Ok\! Bye." -i face-smile; exit 1; }
+[[ -z $AShare ]] && { notify-send "VBox Remounter" "Ok\! Bye." -i face-smile; exit 1; }
 
 # Choose a folder to mount the VBox shared folder
 SharesDIR=$(zenity --file-selection --directory --title="Select a folder to mount the VBox shared folder")
-[[ -z $SharesDIR ]] && { notify-send "Remount" "Ok\! Bye." -i face-smile; exit 2; }
+[[ -z $SharesDIR ]] && { notify-send "VBox Remounter" "Ok\! Bye." -i face-smile; exit 2; }
 SharesDIR="$SharesDIR"/"$AShare"
 mkdir -p "$SharesDIR"
 
@@ -45,9 +45,9 @@ else
 fi
 
 # Run the command to remount the shared folder with user rights
-bash -c "$RMcmd" || { notify-send "Remount" "I cound not remount the shared folder" -i face-embarrassed; exit 3; }
+bash -c "$RMcmd" || { notify-send "VBox Remounter" "I cound not remount the shared folder" -i face-embarrassed; exit 3; }
 
 xdg-open $SharesDIR
-notify-send "Remount" "Remounting the shared folder <b>$AShare</b> to folder <b>$SharesDIR</b> was done ok\!" -i face-wink
+notify-send "VBox Remounter" "Remounting the shared folder <b>$AShare</b> to folder <b>$SharesDIR</b> was done ok\!" -i face-wink
 
 exit 0

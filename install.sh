@@ -33,10 +33,10 @@ fi
 	chown -R root:root /usr/share/icons/hicolor/ &&
 	desktop-file-install remvbox.desktop
 } || {
-	notify-send "RemVBox Installer" "Installation's failed..." -i face-worried
+	notify-send "VBox Remounter" "Installation's failed..." -i face-worried
 	exit 1
 }
 
-notify-send "RemVBox Installer" "Installation's done okay\!" -i face-wink
-#exit 0
-# I don't need the above (see line 27)
+notify-send "VBox Remounter" "Installation's done okay\!" -i face-wink
+
+exit 0
