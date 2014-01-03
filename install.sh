@@ -8,7 +8,7 @@
 #                                    /_/           drxspace@gmail.com
 #
 #
-set -e
+#set -e
 
 cd "$(dirname "$0")"
 
@@ -37,6 +37,6 @@ fi
 	exit 1
 }
 
-notify-send "RemVBox Installer" "Installation's done okay!" -i face-wink
+notify-send "RemVBox Installer" "Installation's done okay\!" -i face-wink
 #exit 0
 # I don't need the above (see line 27)
