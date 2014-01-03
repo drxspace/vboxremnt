@@ -28,9 +28,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 {
-	cp -v remvbox /usr/local/bin/
-	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/
-	chown -R root:root /usr/share/icons/hicolor/
+	cp -v remvbox /usr/local/bin/ &&
+	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/ &&
+	chown -R root:root /usr/share/icons/hicolor/ &&
 	desktop-file-install remvbox.desktop
 } || {
 	notify-send "RemVBox Installer" "Installation's failed..." -i face-worried
