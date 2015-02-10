@@ -27,13 +27,6 @@ if [[ $EUID -ne 0 ]]; then
 	exit $?
 fi
 
-#	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/ &&
-
-#	{
-#		ls -1 /usr/share/icons/*/{.,}icon-theme.cache 2>/dev/null | sudo xargs -n1 rm -f;
-#		ls -d1 /usr/share/icons/*/ | sudo xargs -n1 gtk-update-icon-cache -ft;
-#	}
-
 {	cp -v remvbox /usr/local/bin/ &&
 	cp -v remvbox.png /usr/share/pixmaps/ &&
 	chown -R root:root /usr/share/icons/hicolor/ &&
