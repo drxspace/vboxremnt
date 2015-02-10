@@ -27,12 +27,16 @@ if [[ $EUID -ne 0 ]]; then
 	exit $?
 fi
 
-{
-	cp -v remvbox /usr/local/bin/ &&
-	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/ &&
+#	tar xzvf remvbox_icons.tar.gz -C /usr/share/icons/ &&
+
+#	{
+#		ls -1 /usr/share/icons/*/{.,}icon-theme.cache 2>/dev/null | sudo xargs -n1 rm -f;
+#		ls -d1 /usr/share/icons/*/ | sudo xargs -n1 gtk-update-icon-cache -ft;
+#	}
+
+{	cp -v remvbox /usr/local/bin/ &&
+	cp -v remvbox.png /usr/share/pixmaps/ &&
 	chown -R root:root /usr/share/icons/hicolor/ &&
-	{ ls -1 /usr/share/icons/*/{.,}icon-theme.cache 2>/dev/null | sudo xargs -n1 rm -f;
-	  ls -d1 /usr/share/icons/*/ | sudo xargs -n1 gtk-update-icon-cache -ft; }
 	desktop-file-install remvbox.desktop;
 } || {
 	notify-send "VBox Remounter" "Installation's failed..." -i face-worried;
