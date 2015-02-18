@@ -28,6 +28,10 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 #sudo find / -name remvbox.png -exec rm -rfv {} \;
+#sudo curl https://raw.githubusercontent.com/drxspace/vboxremnt/master/remvbox.png -o /usr/share/pixmaps/remvbox.png
+#sudo ls -1 /usr/share/icons/*/{.,}icon-theme.cache | xargs -n1 rm -f
+#sudo ls -d1 /usr/share/icons/*/ | xargs -n1 gtk-update-icon-cache -ft
+
 {	cp -v remvbox /usr/local/bin/ &&
 	cp -v remvbox.png /usr/share/pixmaps/ &&
 	chown -R root:root /usr/share/icons/hicolor/ &&
