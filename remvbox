@@ -10,7 +10,7 @@
 #
 
 # Check to see if the shared folder is already mounted...
-if [[ $EUID -ne 0 ]] ; then
+if [[ $EUID -eq 0 ]] ; then
 	SharesDIR=$(mount -l -t vboxsf | grep -m1 $(id -u `whoami`) | cut -d ' ' -f3)
 else
 	SharesDIR=$(mount -l -t vboxsf | cut -d ' ' -f3 | head -1)
