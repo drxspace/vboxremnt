@@ -9,6 +9,11 @@
 #
 #
 
+# Prerequisites
+if [ ! -t 0 ]; then
+	[[ -x $(which gksudo) ]] || { notify-send "VirtualBox Remounter" "gksudo command is missing\nUse sudo apt-get install gksu to install it" -i face-embarrassed; exit 1; }
+fi
+
 # Check to see if the shared folder is already mounted...
 if [[ $EUID -eq 0 ]] ; then
 	SharesDIR=$(mount -l -t vboxsf | grep -m1 $(id -u `whoami`) | cut -d ' ' -f3)
@@ -29,11 +34,11 @@ if [[ ! -z ${SharesList[*]} ]]; then
 else
 	AShare=$(zenity --entry --text="I couldn't find any mounted VBox shared folder.\nIf you'd like you can type a VBox shared folder's name here:" --entry-text="vbshares")
 fi
-[[ -z $AShare ]] && { notify-send "VBox Remounter" "Ok\! Bye." -i face-smile; exit 1; }
+[[ -z $AShare ]] && { notify-send "VirtualBox Remounter" "Ok\! Bye." -i face-smile; exit 2; }
 
 # Choose a folder to mount the VBox shared folder
 SharesDIR=$(zenity --file-selection --directory --title="Select a folder to mount the VBox shared folder")
-[[ -z $SharesDIR ]] && { notify-send "VBox Remounter" "Ok\! Bye." -i face-smile; exit 2; }
+[[ -z $SharesDIR ]] && { notify-send "VirtualBox Remounter" "Ok\! Bye." -i face-smile; exit 3; }
 SharesDIR="$SharesDIR"/"$AShare"
 mkdir -p "$SharesDIR"
 
@@ -45,9 +50,9 @@ else
 fi
 
 # Run the command to remount the shared folder with user rights
-bash -c "$RMcmd" || { notify-send "VBox Remounter" "I cound not remount the shared folder" -i face-embarrassed; exit 3; }
+bash -c "$RMcmd" || { notify-send "VirtualBox Remounter" "I could not remount the shared folder" -i face-embarrassed; exit 4; }
 
 xdg-open $SharesDIR
-notify-send "VBox Remounter" "Remounting the shared folder <b>$AShare</b> to folder <b>$SharesDIR</b> was done ok\!" -i face-wink
+notify-send "VirtualBox Remounter" "Remounting the shared folder <b>$AShare</b> to folder <b>$SharesDIR</b> was done ok\!" -i face-wink
 
 exit 0

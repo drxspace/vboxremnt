@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=VirtualBox shares remounter
+Name[el]=Επανασύνδεση κοινόχρηστου φακέλλου του VirtualBox
+Comment=Remounts a VirtualBox shared folder for use by the current user
+Comment[el]=Επανασύνδεση ενός κοινόχρηστου φακέλλου του VirtualBox για χρήση από τον τρέχον χρήστη
+GenericName=VirtualBox shares Remounter
+GenericName[el]=Επανασύνδεση κοινόχρηστου φακέλλου του VirtualBox
+Exec=/usr/local/bin/vboxremnt
+Terminal=false
+Type=Application
+Categories=GTK;System;Filesystem;
+Icon=vboxremnt
+StartupNotify=true

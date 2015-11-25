@@ -21,9 +21,9 @@ if [[ $EUID -ne 0 ]]; then
 	exit $?
 fi
 
-rm -v /usr/local/bin/remvbox 2>/dev/null
-find / -mount -name remvbox.desktop -exec rm -v {} \;
-find / -mount -name remvbox.png -exec rm -v {} \;
+rm -v /usr/local/bin/vboxremnt 2>/dev/null
+find / -mount -name vboxremnt.desktop -exec rm -v {} \;
+find / -mount -name vboxremnt.png -exec rm -v {} \;
 
 notify-send "VBox Remounter" "Uninstaller returns $?\nBye..." -i face-wink
 
